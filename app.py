@@ -44,9 +44,12 @@ def create_app():
     return app
 
 
+# Expose the WSGI app at module import time for platforms like Vercel.
+app = create_app()
+
+
 # --- Entry Point ---
 if __name__ == "__main__":
-    app = create_app()
     port = int(os.getenv("PORT", 5000))
     debug = os.getenv("FLASK_DEBUG", "1") == "1"
 
