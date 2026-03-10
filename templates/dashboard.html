@@ -1,0 +1,343 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Artisan Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-layout">
+    <!-- ─── Sidebar ───────────────────────────────────────────────── -->
+    <aside class="dashboard-sidebar d-none d-lg-block">
+        <div class="sidebar-inner">
+            <nav class="sidebar-nav">
+                <a href="#profile-section" class="sidebar-link active" data-section="profile">
+                    <i class="bi bi-person-circle"></i> Craft Profile
+                </a>
+                <a href="#trends-section" class="sidebar-link" data-section="trends">
+                    <i class="bi bi-graph-up-arrow"></i> Trend Explorer
+                </a>
+                <a href="#generate-section" class="sidebar-link" data-section="generate">
+                    <i class="bi bi-brush"></i> Generate Design
+                </a>
+                <a href="#saved-section" class="sidebar-link" data-section="saved">
+                    <i class="bi bi-bookmark-heart"></i> Saved Ideas
+                </a>
+            </nav>
+
+            <!-- Quick Stats -->
+            <div class="sidebar-stats mt-4">
+                <div class="stat-item">
+                    <span class="stat-number" id="conceptCount">{{ recent_concepts|length }}</span>
+                    <span class="stat-label">Saved Concepts</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ─── Main Dashboard Content ────────────────────────────────── -->
+    <div class="dashboard-main">
+        <!-- Mobile section nav -->
+        <div class="d-lg-none mb-4">
+            <div class="mobile-nav-scroll">
+                <a href="#profile-section" class="mobile-nav-pill active">
+                    <i class="bi bi-person-circle"></i> Profile
+                </a>
+                <a href="#trends-section" class="mobile-nav-pill">
+                    <i class="bi bi-graph-up-arrow"></i> Trends
+                </a>
+                <a href="#generate-section" class="mobile-nav-pill">
+                    <i class="bi bi-brush"></i> Generate
+                </a>
+                <a href="#saved-section" class="mobile-nav-pill">
+                    <i class="bi bi-bookmark-heart"></i> Saved
+                </a>
+            </div>
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="welcome-card mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3 class="welcome-title">
+                        Namaste, <span class="text-accent">{{ artisan.name }}</span> 🙏
+                    </h3>
+                    <p class="welcome-text mb-0">
+                        Explore what's trending in <strong>{{ artisan.craft_type }}</strong>,
+                        get design inspiration, and generate new product concepts.
+                    </p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <span class="badge badge-craft">
+                        <i class="bi bi-geo-alt me-1"></i>{{ artisan.region }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Section 1: Craft Profile ──────────────────────────── -->
+        <section id="profile-section" class="dashboard-section">
+            <div class="section-header">
+                <h4><i class="bi bi-person-circle me-2"></i>Craft Profile</h4>
+                <button class="btn btn-sm btn-outline-warm" id="editProfileBtn" onclick="toggleProfileEdit()">
+                    <i class="bi bi-pencil me-1"></i>Edit
+                </button>
+            </div>
+
+            <div class="card artisan-card">
+                <div class="card-body">
+                    <div id="profileView">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="profile-field">
+                                    <label>Artisan Name</label>
+                                    <p id="profileName">{{ artisan.name }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="profile-field">
+                                    <label>Craft Type</label>
+                                    <p id="profileCraft">{{ artisan.craft_type }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="profile-field">
+                                    <label>Region</label>
+                                    <p id="profileRegion">{{ artisan.region }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="profile-field">
+                                    <label>Preferred Materials</label>
+                                    <p id="profileMaterials">{{ artisan.materials }}</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="profile-field">
+                                    <label>Experience</label>
+                                    <p id="profileExperience">{{ artisan.experience }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Editable profile form (hidden by default) -->
+                    <div id="profileEdit" style="display: none;">
+                        <form id="profileForm" onsubmit="saveProfile(event)">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Artisan Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{ artisan.name }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Craft Type</label>
+                                    <input type="text" class="form-control" name="craft_type"
+                                        value="{{ artisan.craft_type }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Region</label>
+                                    <input type="text" class="form-control" name="region" value="{{ artisan.region }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Preferred Materials</label>
+                                    <input type="text" class="form-control" name="materials"
+                                        value="{{ artisan.materials }}">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Experience</label>
+                                    <input type="text" class="form-control" name="experience"
+                                        value="{{ artisan.experience }}">
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-accent me-2">
+                                        <i class="bi bi-check-lg me-1"></i>Save Profile
+                                    </button>
+                                    <button type="button" class="btn btn-outline-warm"
+                                        onclick="toggleProfileEdit()">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Section 2: Trend Recommendations ─────────────────── -->
+        <section id="trends-section" class="dashboard-section">
+            <div class="section-header">
+                <h4><i class="bi bi-graph-up-arrow me-2"></i>Trend Explorer</h4>
+            </div>
+
+            <div class="card artisan-card">
+                <div class="card-body">
+                    <p class="text-muted mb-3">
+                        Discover trending colors, motifs, and product directions for your craft.
+                    </p>
+                    <form id="trendForm" onsubmit="fetchTrends(event)">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Craft Type <span class="text-danger">*</span></label>
+                                <select class="form-select" id="trendCraft" name="craft_type"
+                                    onchange="loadProducts(this.value)" required>
+                                    <option value="">Select craft...</option>
+                                    {% for craft in crafts %}
+                                    <option value="{{ craft.key }}">{{ craft.label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Product Category <span class="text-danger">*</span></label>
+                                <select class="form-select" id="trendProduct" name="product_category"
+                                    onchange="loadAudiences()" required>
+                                    <option value="">Select product...</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Target Customer</label>
+                                <select class="form-select" id="trendAudience" name="target_customer">
+                                    <option value="">Any audience</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Style Preference</label>
+                                <select class="form-select" name="style_preference">
+                                    <option value="">Any style</option>
+                                    <option value="pastel">Pastel</option>
+                                    <option value="minimal">Minimal</option>
+                                    <option value="festive">Festive</option>
+                                    <option value="contemporary">Contemporary</option>
+                                    <option value="traditional">Traditional</option>
+                                    <option value="bold">Bold & Vibrant</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-end">
+                                <button type="submit" class="btn btn-accent w-100" id="trendBtn">
+                                    <i class="bi bi-search me-2"></i>Explore Trends
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Trend Results -->
+            <div id="trendResults" class="mt-4" style="display: none;">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- ─── Section 3: Design Concept Generator ───────────────── -->
+        <section id="generate-section" class="dashboard-section">
+            <div class="section-header">
+                <h4><i class="bi bi-brush me-2"></i>Generate Design Concept</h4>
+            </div>
+
+            <div class="card artisan-card">
+                <div class="card-body">
+                    <p class="text-muted mb-3">
+                        Describe your design idea and generate a concept image with an AI-crafted prompt.
+                    </p>
+                    <form id="generateForm" onsubmit="generateDesign(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Craft Type <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="craft_type"
+                                    placeholder="e.g., Banarasi weaving" required id="genCraftType">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Product Type <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="product_type"
+                                    placeholder="e.g., stole, cushion cover, tote bag" required id="genProductType">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Desired Style</label>
+                                <select class="form-select" name="style" id="genStyle">
+                                    <option value="contemporary">Contemporary</option>
+                                    <option value="minimal">Minimal</option>
+                                    <option value="festive">Festive</option>
+                                    <option value="traditional">Traditional</option>
+                                    <option value="bohemian">Bohemian</option>
+                                    <option value="luxury">Luxury</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Color Palette</label>
+                                <input type="text" class="form-control" name="color_palette"
+                                    placeholder="e.g., pastel rose, muted gold, ivory" id="genColors">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Motif Direction</label>
+                                <input type="text" class="form-control" name="motif_direction"
+                                    placeholder="e.g., floral zari, geometric" id="genMotifs">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label">Target Audience</label>
+                                <input type="text" class="form-control" name="target_audience"
+                                    placeholder="e.g., young urban professionals" id="genAudience">
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="submit" class="btn btn-accent w-100" id="generateBtn">
+                                    <i class="bi bi-stars me-2"></i>Generate Concept
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Generation Result -->
+            <div id="generateResult" class="mt-4" style="display: none;">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- ─── Section 4: Saved Ideas ────────────────────────────── -->
+        <section id="saved-section" class="dashboard-section">
+            <div class="section-header">
+                <h4><i class="bi bi-bookmark-heart me-2"></i>Recent Saved Ideas</h4>
+                <a href="{{ url_for('main.saved_concepts') }}" class="btn btn-sm btn-outline-warm">
+                    View All <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+
+            <div class="row g-3" id="savedIdeasGrid">
+                {% if recent_concepts %}
+                {% for concept in recent_concepts %}
+                <div class="col-md-6 col-lg-3" id="concept-card-{{ concept.id }}">
+                    <div class="card concept-card h-100">
+                        {% if concept.image_url %}
+                        <img src="{{ concept.image_url }}" class="card-img-top concept-img" alt="{{ concept.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h6 class="card-title">{{ concept.title }}</h6>
+                            <div class="concept-meta">
+                                <span><i class="bi bi-palette me-1"></i>{{ concept.craft_type }}</span>
+                                <span><i class="bi bi-box me-1"></i>{{ concept.product_type }}</span>
+                            </div>
+                            <p class="card-text small text-muted mt-2">
+                                {{ concept.summary[:100] }}{% if concept.summary|length > 100 %}…{% endif %}
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <small class="text-muted">
+                                <i class="bi bi-clock me-1"></i>{{ concept.created_at }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="col-12">
+                    <div class="empty-state text-center py-4">
+                        <i class="bi bi-lightbulb" style="font-size: 2.5rem; color: var(--soft-gold);"></i>
+                        <p class="mt-2 text-muted">
+                            No saved concepts yet. Generate your first design idea above!
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

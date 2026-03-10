@@ -1,0 +1,355 @@
+{
+    "banarasi_weaving": {
+        "craft_label": "Banarasi Weaving",
+        "description": "Traditional handloom weaving from Varanasi known for intricate zari brocade work.",
+        "products": {
+            "sari": {
+                "label": "Sari",
+                "audiences": {
+                    "young_working_women": {
+                        "label": "Young Working Women",
+                        "trending_colors": [
+                            {
+                                "name": "Pastel Gold",
+                                "hex": "#E8D5A3"
+                            },
+                            {
+                                "name": "Muted Rose",
+                                "hex": "#C9A0A0"
+                            },
+                            {
+                                "name": "Ivory",
+                                "hex": "#FFFFF0"
+                            },
+                            {
+                                "name": "Dusty Lavender",
+                                "hex": "#B4A7D6"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Minimal floral brocade with reduced density",
+                            "Geometric zari borders with contemporary spacing",
+                            "Abstract peacock motifs with clean lines",
+                            "Micro-butis scattered pattern"
+                        ],
+                        "product_suggestions": [
+                            "Lightweight formal saris for office events",
+                            "Pre-draped sari sets for convenience",
+                            "Sari-inspired wrap dresses"
+                        ],
+                        "styling_insights": [
+                            "Lighter motif density performs better for younger professionals",
+                            "Minimal border-heavy designs are more wearable for office events",
+                            "Blending traditional gold zari with pastel tones makes pieces more versatile"
+                        ],
+                        "rationale": "Pastel gold and muted rose are trending for urban festive wear. Young working women seek pieces that transition from office to evening events. Lighter, contemporary adaptations of traditional weaving attract this segment while preserving craft authenticity."
+                    },
+                    "wedding_buyers": {
+                        "label": "Wedding Buyers",
+                        "trending_colors": [
+                            {
+                                "name": "Royal Magenta",
+                                "hex": "#8B0045"
+                            },
+                            {
+                                "name": "Deep Maroon",
+                                "hex": "#800020"
+                            },
+                            {
+                                "name": "Antique Gold",
+                                "hex": "#C9A548"
+                            },
+                            {
+                                "name": "Emerald Green",
+                                "hex": "#046A38"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Full-body jaal (net) pattern in dense brocade",
+                            "Traditional kalga-bel border with modern symmetry",
+                            "Mughal-inspired floral medallions",
+                            "Intricate peacock and lotus compositions"
+                        ],
+                        "product_suggestions": [
+                            "Heavy bridal saris with full zari work",
+                            "Matching dupatta and blouse fabric sets",
+                            "Lehenga-sari fusion pieces"
+                        ],
+                        "styling_insights": [
+                            "Full-body brocade with rich jewel tones remains most desirable for bridal wear",
+                            "Coordinated wedding sets increase perceived value",
+                            "Heritage motifs in dense composition signal luxury and occasion"
+                        ],
+                        "rationale": "Wedding buyers continue to value opulent, rich textiles. Deep jewel tones with heavy zari work signal celebration and tradition. Offering complete bridal sets increases basket size while showcasing the full range of Banarasi craftsmanship."
+                    },
+                    "urban_lifestyle": {
+                        "label": "Urban Lifestyle Buyers",
+                        "trending_colors": [
+                            {
+                                "name": "Sage Green",
+                                "hex": "#9DC183"
+                            },
+                            {
+                                "name": "Soft Terracotta",
+                                "hex": "#CC7E5E"
+                            },
+                            {
+                                "name": "Warm Taupe",
+                                "hex": "#B09E8F"
+                            },
+                            {
+                                "name": "Off-White",
+                                "hex": "#FAF0E6"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Single large statement motif on plain ground",
+                            "Stripe-brocade fusion patterns",
+                            "Tone-on-tone weaving with subtle texture",
+                            "Contemporary geometric inspired by traditional butis"
+                        ],
+                        "product_suggestions": [
+                            "Casual day saris for brunch or cultural events",
+                            "Mix-and-match saris with multiple blouse options",
+                            "Handloom saris marketed as sustainable luxury"
+                        ],
+                        "styling_insights": [
+                            "Earth tones and muted naturals are gaining in urban casual segments",
+                            "Sustainability and handloom storytelling increases purchase intent",
+                            "Tone-on-tone texture work appeals to minimalist aesthetics"
+                        ],
+                        "rationale": "Urban lifestyle consumers seek understated luxury that aligns with sustainability values. Earth tones and minimalist motifs create versatile pieces for everyday occasions while the handloom story adds conscious-consumption appeal."
+                    }
+                }
+            },
+            "stole": {
+                "label": "Stole / Dupatta",
+                "audiences": {
+                    "young_working_women": {
+                        "label": "Young Working Women",
+                        "trending_colors": [
+                            {
+                                "name": "Blush Pink",
+                                "hex": "#F5C6C6"
+                            },
+                            {
+                                "name": "Powder Blue",
+                                "hex": "#B0D4F1"
+                            },
+                            {
+                                "name": "Champagne",
+                                "hex": "#F7E7CE"
+                            },
+                            {
+                                "name": "Soft Mauve",
+                                "hex": "#D8BFD8"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Delicate border-only brocade with plain body",
+                            "Small scattered butis with ample negative space",
+                            "Contemporary chevron zari patterns",
+                            "Minimalist floral trails along edges"
+                        ],
+                        "product_suggestions": [
+                            "Lightweight Banarasi stoles for layering over western wear",
+                            "Contemporary dupattas for Indo-western styling",
+                            "Scarves with traditional weave in modern dimensions"
+                        ],
+                        "styling_insights": [
+                            "Traditional floral brocade adapted for stoles and contemporary dupattas reaches new audiences",
+                            "Lighter-weight weaving with pastel tones makes pieces more wearable year-round",
+                            "Smaller dimensions and softer fabrics suit urban daily wear"
+                        ],
+                        "rationale": "Traditional floral brocade can be adapted into stoles and contemporary dupattas. Lighter formats allow artisans to reach customers who may not buy full saris but appreciate the craft in accessory form."
+                    }
+                }
+            }
+        }
+    },
+    "madhubani_art": {
+        "craft_label": "Madhubani Art",
+        "description": "Traditional folk painting from Mithila region featuring vibrant colors and mythological narratives.",
+        "products": {
+            "tote_bag": {
+                "label": "Tote Bag",
+                "audiences": {
+                    "urban_lifestyle": {
+                        "label": "Urban Lifestyle Buyers",
+                        "trending_colors": [
+                            {
+                                "name": "Indigo",
+                                "hex": "#3F51B5"
+                            },
+                            {
+                                "name": "Mustard Yellow",
+                                "hex": "#E4A010"
+                            },
+                            {
+                                "name": "Brick Red",
+                                "hex": "#C34A2C"
+                            },
+                            {
+                                "name": "Natural Cream",
+                                "hex": "#FFF8DC"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Simplified fish and lotus motifs with bold outlines",
+                            "Single large Madhubani tree-of-life design",
+                            "Geometric border patterns inspired by kohbar art",
+                            "Modern interpretation of peacock motifs"
+                        ],
+                        "product_suggestions": [
+                            "Canvas totes with printed Madhubani art",
+                            "Laptop bags with hand-painted panels",
+                            "Weekend travel bags with Mithila-inspired prints"
+                        ],
+                        "styling_insights": [
+                            "Bold, simplified Madhubani motifs translate well to accessories",
+                            "Contrast of traditional art on contemporary formats creates strong visual identity",
+                            "Natural/off-white base with vibrant artwork has strong market appeal"
+                        ],
+                        "rationale": "Madhubani art's bold lines and vibrant colors adapt naturally to accessories. Urban consumers value the story behind handcrafted items, and simplified motifs on tote bags make traditional art part of daily life, expanding market reach beyond wall art."
+                    }
+                }
+            },
+            "wall_art": {
+                "label": "Wall Art / Home Decor",
+                "audiences": {
+                    "home_decor_enthusiasts": {
+                        "label": "Home Decor Enthusiasts",
+                        "trending_colors": [
+                            {
+                                "name": "Deep Teal",
+                                "hex": "#005F6B"
+                            },
+                            {
+                                "name": "Terra Rosa",
+                                "hex": "#C05746"
+                            },
+                            {
+                                "name": "Ochre Yellow",
+                                "hex": "#CC7722"
+                            },
+                            {
+                                "name": "Charcoal",
+                                "hex": "#36454F"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Large-scale single narrative scenes on canvas",
+                            "Modular panel sets telling connected stories",
+                            "Abstract interpretations of traditional Mithila themes",
+                            "Nature-inspired motifs (birds, fish, trees) in contemporary compositions"
+                        ],
+                        "product_suggestions": [
+                            "Framed canvas prints in standard gallery sizes",
+                            "Triptych wall art sets",
+                            "Limited-edition hand-painted originals",
+                            "Digital print posters for affordable entry point"
+                        ],
+                        "styling_insights": [
+                            "Contemporary color palettes attract modern home buyers",
+                            "Gallery-ready sizing and framing increases perceived value",
+                            "Story cards explaining the art's meaning increase purchase intent"
+                        ],
+                        "rationale": "Home decor buyers increasingly seek art with cultural depth and authenticity. Madhubani paintings in contemporary color palettes and standard gallery formats bridge traditional craft with modern interior design. Offering both originals and prints creates tiered pricing that widens the market."
+                    }
+                }
+            }
+        }
+    },
+    "block_printing": {
+        "craft_label": "Block Printing",
+        "description": "Hand block printing using carved wooden blocks, traditionally practiced in Jaipur and Bagru.",
+        "products": {
+            "cushion_cover": {
+                "label": "Cushion Cover",
+                "audiences": {
+                    "home_decor_enthusiasts": {
+                        "label": "Home Decor Enthusiasts",
+                        "trending_colors": [
+                            {
+                                "name": "Indigo Blue",
+                                "hex": "#274C77"
+                            },
+                            {
+                                "name": "Natural White",
+                                "hex": "#FAFAFA"
+                            },
+                            {
+                                "name": "Rust Orange",
+                                "hex": "#B7410E"
+                            },
+                            {
+                                "name": "Olive Green",
+                                "hex": "#6B8E23"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Dabu resist-print geometric patterns",
+                            "Scattered small floral blocks with natural dye look",
+                            "Chevron and stripe combinations",
+                            "Traditional jaal (mesh) patterns with modern spacing"
+                        ],
+                        "product_suggestions": [
+                            "Cushion cover sets in coordinated colorways",
+                            "Mix-and-match pattern collections",
+                            "Lumbar pillow covers with border prints"
+                        ],
+                        "styling_insights": [
+                            "Coordinated sets of 3-4 complementary patterns drive higher order value",
+                            "Natural dye aesthetics and sustainability messaging resonate strongly",
+                            "Indigo-on-white combinations remain perennially popular"
+                        ],
+                        "rationale": "Block-printed cushion covers are a gateway product for home decor buyers exploring handmade textiles. The indigo-natural-rust palette aligns with global trends toward warm, earthy interiors. Coordinated sets encourage larger purchases while showcasing the variety of traditional block-printing patterns."
+                    }
+                }
+            },
+            "table_runner": {
+                "label": "Table Runner",
+                "audiences": {
+                    "urban_lifestyle": {
+                        "label": "Urban Lifestyle Buyers",
+                        "trending_colors": [
+                            {
+                                "name": "Terracotta",
+                                "hex": "#C96B3C"
+                            },
+                            {
+                                "name": "Sage",
+                                "hex": "#9CAF88"
+                            },
+                            {
+                                "name": "Cream",
+                                "hex": "#FFFDD0"
+                            },
+                            {
+                                "name": "Charcoal Blue",
+                                "hex": "#36454F"
+                            }
+                        ],
+                        "trending_motifs": [
+                            "Minimalist border-print designs",
+                            "Single large repeat block patterns",
+                            "Abstract botanical prints",
+                            "Geometric tile-inspired patterns"
+                        ],
+                        "product_suggestions": [
+                            "Table runners with matching napkin sets",
+                            "Reversible runners with contrasting prints",
+                            "Festive-themed seasonal collections"
+                        ],
+                        "styling_insights": [
+                            "Table linens with a handmade story perform well as gifting items",
+                            "Warm earth tones suit current dining trend toward rustic elegance",
+                            "Offering matching sets creates a complete table-setting proposition"
+                        ],
+                        "rationale": "Urban consumers are investing in dining experiences at home. Block-printed table runners in warm earth tones bring artisanal character to everyday meals. Positioning these as both daily-use and gifting items widens the market opportunity for artisans."
+                    }
+                }
+            }
+        }
+    }
+}

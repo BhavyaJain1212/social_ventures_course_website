@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% block title %}Saved Design Concepts — Artisan Dashboard{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="page-heading">
+                <i class="bi bi-bookmark-heart me-2"></i>Saved Design Concepts
+            </h2>
+            <p class="text-muted">Your collection of generated design ideas and concepts.</p>
+        </div>
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-warm">
+            <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Concepts Grid -->
+    {% if concepts %}
+    <div class="row g-4" id="conceptsGrid">
+        {% for concept in concepts %}
+        <div class="col-md-6 col-lg-4" id="concept-card-{{ concept.id }}">
+            <div class="card concept-card-full h-100">
+                {% if concept.image_url %}
+                <img src="{{ concept.image_url }}" class="card-img-top concept-img-lg" alt="{{ concept.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ concept.title }}</h5>
+                    <div class="concept-meta mb-2">
+                        <span class="badge bg-warm-light text-dark">
+                            <i class="bi bi-palette me-1"></i>{{ concept.craft_type }}
+                        </span>
+                        <span class="badge bg-warm-light text-dark">
+                            <i class="bi bi-box me-1"></i>{{ concept.product_type }}
+                        </span>
+                        {% if concept.style %}
+                        <span class="badge bg-warm-light text-dark">
+                            <i class="bi bi-magic me-1"></i>{{ concept.style }}
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    {% if concept.target_audience %}
+                    <p class="small mb-1">
+                        <strong>Audience:</strong> {{ concept.target_audience }}
+                    </p>
+                    {% endif %}
+
+                    {% if concept.color_palette %}
+                    <p class="small mb-1">
+                        <strong>Colors:</strong> {{ concept.color_palette }}
+                    </p>
+                    {% endif %}
+
+                    {% if concept.motif_direction %}
+                    <p class="small mb-1">
+                        <strong>Motifs:</strong> {{ concept.motif_direction }}
+                    </p>
+                    {% endif %}
+
+                    <p class="card-text text-muted mt-2">{{ concept.summary }}</p>
+
+                    <!-- Expandable Prompt -->
+                    {% if concept.prompt_text %}
+                    <div class="mt-2">
+                        <button class="btn btn-sm btn-outline-warm" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#prompt-{{ concept.id }}">
+                            <i class="bi bi-code-slash me-1"></i>View Prompt
+                        </button>
+                        <div class="collapse mt-2" id="prompt-{{ concept.id }}">
+                            <div class="prompt-display">
+                                {{ concept.prompt_text }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        <i class="bi bi-clock me-1"></i>{{ concept.created_at }}
+                    </small>
+                    <div>
+                        <button class="btn btn-sm btn-outline-warm me-1" onclick="downloadBrief({{ concept.id }})"
+                            title="Download design brief">
+                            <i class="bi bi-download"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteConcept({{ concept.id }})"
+                            title="Delete concept">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <!-- Empty State -->
+    <div class="empty-state-large text-center py-5">
+        <div class="empty-icon mb-3">
+            <i class="bi bi-lightbulb"></i>
+        </div>
+        <h4>No saved concepts yet</h4>
+        <p class="text-muted mb-4">
+            Head to the dashboard and generate your first design concept!
+        </p>
+        <a href="{{ url_for('main.dashboard') }}#generate-section" class="btn btn-accent">
+            <i class="bi bi-brush me-2"></i>Generate First Design
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    /**
+     * Delete a saved concept and remove its card from the grid.
+     */
+    async function deleteConcept(conceptId) {
+        if (!confirm('Are you sure you want to delete this concept?')) return;
+
+        try {
+            const response = await fetch(`/api/concepts/${conceptId}`, {
+                method: 'DELETE',
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                const card = document.getElementById(`concept-card-${conceptId}`);
+                if (card) {
+                    card.style.transition = 'opacity 0.3s, transform 0.3s';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => card.remove(), 300);
+                }
+                showToast('Concept deleted successfully.', 'success');
+
+                // Check if grid is now empty
+                setTimeout(() => {
+                    const grid = document.getElementById('conceptsGrid');
+                    if (grid && grid.children.length === 0) {
+                        location.reload();
+                    }
+                }, 400);
+            } else {
+                showToast(data.error || 'Failed to delete concept.', 'danger');
+            }
+        } catch (err) {
+            showToast('Network error. Please try again.', 'danger');
+        }
+    }
+
+    /**
+     * Download a design brief as a text file.
+     */
+    function downloadBrief(conceptId) {
+        const card = document.getElementById(`concept-card-${conceptId}`);
+        if (!card) return;
+
+        const title = card.querySelector('.card-title')?.textContent || 'Design Concept';
+        const summary = card.querySelector('.card-text')?.textContent || '';
+        const promptEl = card.querySelector('.prompt-display');
+        const prompt = promptEl ? promptEl.textContent : '';
+
+        const brief = [
+            '═══════════════════════════════════════',
+            '  ARTISAN DESIGN BRIEF',
+            '═══════════════════════════════════════',
+            '',
+            `Title: ${title.trim()}`,
+            '',
+            'Summary:',
+            summary.trim(),
+            '',
+            'Generation Prompt:',
+            prompt.trim(),
+            '',
+            '═══════════════════════════════════════',
+            '  Generated by Artisan Dashboard',
+            '═══════════════════════════════════════',
+        ].join('\n');
+
+        const blob = new Blob([brief], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${title.trim().replace(/\s+/g, '_')}_brief.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+
+        showToast('Design brief downloaded!', 'success');
+    }
+
+    /**
+     * Show a Bootstrap toast notification.
+     */
+    function showToast(message, type = 'info') {
+        const container = document.querySelector('.container');
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type} alert-dismissible fade show mt-3`;
+        alert.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+        container.insertBefore(alert, container.firstChild);
+        setTimeout(() => alert.remove(), 4000);
+    }
+</script>
+{% endblock %}

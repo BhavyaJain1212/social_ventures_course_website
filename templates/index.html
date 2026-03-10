@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% block title %}Artisan Dashboard — Empowering Traditional Crafts{% endblock %}
+
+{% block content %}
+<!-- ─── Hero Section ──────────────────────────────────────────────── -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-7">
+                <p class="hero-eyebrow animate-fade-up">
+                    <span class="brand-icon">✦</span> A Social Venture for Artisans
+                </p>
+                <h1 class="hero-title animate-fade-up delay-1">
+                    Bridging Traditional Craft<br>
+                    with <span class="text-accent">Tomorrow's Market</span>
+                </h1>
+                <p class="hero-subtitle animate-fade-up delay-2">
+                    Helping artisans discover trending designs, modern aesthetics,
+                    and new product directions — while preserving the soul of their craft.
+                </p>
+                <div class="animate-fade-up delay-3">
+                    <a href="{{ url_for('main.dashboard') }}" class="btn btn-accent btn-lg me-3">
+                        <i class="bi bi-grid-1x2 me-2"></i>Open Artisan Dashboard
+                    </a>
+                    <a href="#problem" class="btn btn-outline-warm btn-lg">
+                        Learn More <i class="bi bi-arrow-down ms-1"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block text-center">
+                <div class="hero-decorative">
+                    <div class="deco-circle deco-circle-1"></div>
+                    <div class="deco-circle deco-circle-2"></div>
+                    <div class="deco-circle deco-circle-3"></div>
+                    <div class="deco-diamond">
+                        <i class="bi bi-palette2" style="font-size: 3rem; color: var(--terracotta);"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── Problem Statement ─────────────────────────────────────────── -->
+<section id="problem" class="py-5 section-warm">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-eyebrow">The Challenge</p>
+            <h2 class="section-heading">Why Artisans Need Design Intelligence</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="problem-card h-100">
+                    <div class="problem-icon">
+                        <i class="bi bi-eye-slash"></i>
+                    </div>
+                    <h5>Limited Market Visibility</h5>
+                    <p>Many artisans don't have access to changing market preferences, trending aesthetics, or modern
+                        product design signals.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="problem-card h-100">
+                    <div class="problem-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
+                    <h5>Repeating Old Patterns</h5>
+                    <p>Without trend awareness, skilled artisans continue making traditional products while customer
+                        taste moves toward lighter, contemporary designs.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="problem-card h-100">
+                    <div class="problem-icon">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+                    <h5>Wasted Resources</h5>
+                    <p>Creating products without market validation risks time, material, and effort — resources that
+                        artisans can't afford to waste.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── Solution / Features ───────────────────────────────────────── -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-eyebrow">Our Solution</p>
+            <h2 class="section-heading">Technology as a Creative Assistant</h2>
+            <p class="section-subheading">
+                The artisan remains the creator. We provide the intelligence layer to help
+                them make informed creative decisions.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon-wrap">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <h4>Trend Recommendations</h4>
+                    <p>Discover what colors, motifs, and product formats are trending for your craft type and target
+                        market. Get actionable insights on design direction.</p>
+                    <ul class="feature-list">
+                        <li>Trending color palettes with visual swatches</li>
+                        <li>Pattern and motif direction insights</li>
+                        <li>Product format suggestions</li>
+                        <li>Audience-specific styling guidance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon-wrap">
+                        <i class="bi bi-brush"></i>
+                    </div>
+                    <h4>Design Concept Generation</h4>
+                    <p>Visualize adapted product ideas before investing time and material. Generate concept images that
+                        blend your craft traditions with modern aesthetics.</p>
+                    <ul class="feature-list">
+                        <li>AI-powered design prompt creation</li>
+                        <li>Concept image visualization</li>
+                        <li>Save and revisit design ideas</li>
+                        <li>Downloadable design briefs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── Supported Crafts ──────────────────────────────────────────── -->
+<section class="py-5 section-warm">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-eyebrow">Craft Types We Support</p>
+            <h2 class="section-heading">Celebrating India's Artisan Heritage</h2>
+        </div>
+
+        <div class="row g-3 justify-content-center">
+            {% set crafts = [
+            ("Banarasi Weaving", "bi-grid-3x3-gap", "Varanasi"),
+            ("Madhubani Art", "bi-brush", "Mithila"),
+            ("Block Printing", "bi-stamp", "Jaipur & Bagru"),
+            ("Hand Embroidery", "bi-flower1", "Lucknow"),
+            ("Pottery", "bi-cup-hot", "Khurja & Jaipur"),
+            ("Metal Craft", "bi-gem", "Moradabad"),
+            ("Wood Craft", "bi-tree", "Saharanpur"),
+            ] %}
+            {% for name, icon, region in crafts %}
+            <div class="col-6 col-md-3 col-lg">
+                <div class="craft-badge text-center p-3">
+                    <i class="bi {{ icon }} craft-badge-icon"></i>
+                    <h6 class="mb-0 mt-2">{{ name }}</h6>
+                    <small class="text-muted">{{ region }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section class="py-5 text-center">
+    <div class="container">
+        <div class="cta-card mx-auto">
+            <h2 class="mb-3">Ready to Explore Design Trends?</h2>
+            <p class="mb-4 text-muted">
+                Open the Artisan Dashboard to discover what's trending, generate
+                new design concepts, and build your creative portfolio.
+            </p>
+            <a href="{{ url_for('main.dashboard') }}" class="btn btn-accent btn-lg">
+                <i class="bi bi-grid-1x2 me-2"></i>Open Artisan Dashboard
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
