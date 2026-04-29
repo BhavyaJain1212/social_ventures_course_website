@@ -58,6 +58,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'main.shop' %}active{% endif %}"
+                           href="{{ url_for('main.shop') }}">
+                            <i class="bi bi-bag-heart me-1"></i>Shop
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {% if request.endpoint == 'main.saved_concepts' %}active{% endif %}"
                            href="{{ url_for('main.saved_concepts') }}">
                             <i class="bi bi-bookmark-heart me-1"></i>Saved Ideas

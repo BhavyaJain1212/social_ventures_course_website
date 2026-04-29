@@ -4,6 +4,7 @@ Main Routes — Page-serving routes for the Artisan Dashboard.
 Handles:
     GET /           → Landing page
     GET /dashboard  → Artisan dashboard
+    GET /shop       → Shop / preorder page
     GET /saved-concepts → Saved design concepts gallery
 """
 
@@ -43,6 +44,12 @@ def dashboard():
         recent_concepts=recent_concepts,
         artisan=artisan_profile,
     )
+
+
+@main_bp.route("/shop")
+def shop():
+    """Render the artisan product shop / preorder page."""
+    return render_template("shop.html")
 
 
 @main_bp.route("/saved-concepts")

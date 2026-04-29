@@ -8,6 +8,7 @@ Handles:
     DELETE /api/concepts/<id>    → Delete a saved concept
     PUT  /api/profile            → Update artisan profile (stretch)
     GET  /api/crafts             → Get available craft types
+    GET  /api/products           → List mock shop products
     GET  /api/products/<craft>   → Get products for a craft
     GET  /api/audiences/<craft>/<product> → Get audiences
 """
@@ -25,10 +26,10 @@ from services.prompt_service import (
     generate_concept_title,
 )
 from services.image_service import generate_concept_image
+from services.product_service import get_shop_products
 from models.concept_model import (
     create_concept,
     get_all_concepts,
-    get_concept_by_id,
     delete_concept,
 )
 
@@ -198,6 +199,13 @@ def list_crafts():
     """Return available craft types."""
     crafts = get_available_crafts()
     return jsonify({"success": True, "crafts": crafts})
+
+
+@api_bp.route("/products", methods=["GET"])
+def list_shop_products():
+    """Return mock shop products as JSON."""
+    products = get_shop_products()
+    return jsonify({"success": True, "products": products})
 
 
 @api_bp.route("/products/<craft_key>", methods=["GET"])
