@@ -149,3 +149,11 @@ MOCK_PRODUCTS = [
 def get_shop_products():
     """Return the mock shop catalog."""
     return MOCK_PRODUCTS
+
+
+def get_shop_product_by_id(product_id):
+    """Return one mock shop product by ID, or None."""
+    return next(
+        (product for product in MOCK_PRODUCTS if product["id"] == product_id),
+        None,
+    )

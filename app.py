@@ -28,8 +28,10 @@ def create_app():
 
     # --- Initialize database ---
     from models.concept_model import init_db
+    from models.preorder_model import init_preorder_db
     with app.app_context():
         init_db()
+        init_preorder_db()
 
     # --- Register blueprints ---
     from routes.main_routes import main_bp

@@ -9,6 +9,7 @@ Handles:
     PUT  /api/profile            → Update artisan profile (stretch)
     GET  /api/crafts             → Get available craft types
     GET  /api/products           → List mock shop products
+    POST /api/preorders          → Save preorder interest
     GET  /api/products/<craft>   → Get products for a craft
     GET  /api/audiences/<craft>/<product> → Get audiences
 """
@@ -26,12 +27,13 @@ from services.prompt_service import (
     generate_concept_title,
 )
 from services.image_service import generate_concept_image
-from services.product_service import get_shop_products
+from services.product_service import get_shop_product_by_id, get_shop_products
 from models.concept_model import (
     create_concept,
     get_all_concepts,
     delete_concept,
 )
+from models.preorder_model import create_preorder_interest
 
 api_bp = Blueprint("api", __name__, url_prefix="/api")
 
@@ -206,6 +208,40 @@ def list_shop_products():
     """Return mock shop products as JSON."""
     products = get_shop_products()
     return jsonify({"success": True, "products": products})
+
+
+@api_bp.route("/preorders", methods=["POST"])
+def save_preorder_interest():
+    """
+    Save preorder interest for a mock shop product.
+
+    Expected JSON body:
+    {
+        "product_id": "prod-indigo-stole"
+    }
+    """
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Request body must be JSON"}), 400
+
+    product_id = data.get("product_id", "")
+    if not product_id:
+        return jsonify({"error": "'product_id' is required."}), 400
+
+    product = get_shop_product_by_id(product_id)
+    if not product:
+        return jsonify({"error": "Product not found."}), 404
+
+    preorder_id = create_preorder_interest(product)
+    return jsonify({
+        "success": True,
+        "message": "Preorder interest recorded.",
+        "preorder": {
+            "id": preorder_id,
+            "product_id": product["id"],
+            "product_name": product["name"],
+        },
+    }), 201
 
 
 @api_bp.route("/products/<craft_key>", methods=["GET"])

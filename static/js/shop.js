@@ -2,7 +2,7 @@
  * Artisan Shop — Mock preorder browsing experience.
  *
  * Loads product data from /api/products and renders responsive product cards.
- * Preorder actions only record mock interest with a visible notification.
+ * Preorder actions save MVP interest records, without checkout or payment.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -100,14 +100,33 @@ function renderProducts(products) {
     );
 }
 
-function recordPreorderInterest(productId) {
+async function recordPreorderInterest(productId) {
     const product = window.shopProductsById?.[productId];
     if (!product) return;
 
-    showShopNotice(
-        `Preorder interest recorded for ${escapeHtml(product.name)}. We'll notify you when checkout is available.`,
-        "success"
-    );
+    try {
+        const response = await fetch("/api/preorders", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ product_id: productId }),
+        });
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.error || "Failed to record preorder interest.");
+        }
+
+        showShopNotice(
+            `Preorder interest recorded for ${escapeHtml(product.name)}. We'll notify you when checkout is available.`,
+            "success"
+        );
+    } catch (err) {
+        console.error("Preorder save failed:", err);
+        showShopNotice(
+            "Could not record preorder interest. Please try again.",
+            "danger"
+        );
+    }
 }
 
 function showProductDetails(productId) {
