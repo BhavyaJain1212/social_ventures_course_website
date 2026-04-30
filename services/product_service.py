@@ -8,40 +8,6 @@ used by the dashboard product dropdowns.
 
 MOCK_PRODUCTS = [
     {
-        "id": "prod-indigo-stole",
-        "name": "Handwoven Indigo Cotton Stole",
-        "artisan_name": "Ramesh Kumar",
-        "craft_type": "Banarasi Weaving",
-        "region": "Varanasi, Uttar Pradesh",
-        "price": 2800,
-        "currency": "INR",
-        "short_description": (
-            "A lightweight handwoven stole with subtle zari edges and a soft "
-            "indigo cotton drape for everyday layering."
-        ),
-        "image_url": "/static/images/generated/concept_1c6ed69ef905.png",
-        "availability_status": "Preorder open",
-        "estimated_delivery": "Ships in 3-4 weeks",
-        "tags": ["handmade", "handwoven", "natural dyes", "cotton"],
-    },
-    {
-        "id": "prod-terracotta-vase",
-        "name": "Terracotta Studio Vase",
-        "artisan_name": "Meera Prajapati",
-        "craft_type": "Pottery",
-        "region": "Khurja, Uttar Pradesh",
-        "price": 1650,
-        "currency": "INR",
-        "short_description": (
-            "A sculptural terracotta vase with a matte hand-finished surface, "
-            "made for dried stems and quiet shelf styling."
-        ),
-        "image_url": "/static/images/generated/concept_ee568526781c.png",
-        "availability_status": "Limited batch",
-        "estimated_delivery": "Ships in 2-3 weeks",
-        "tags": ["handmade", "ceramic", "small batch", "home decor"],
-    },
-    {
         "id": "prod-dhokra-figurine",
         "name": "Brass Dhokra Figurine",
         "artisan_name": "Anil Soren",
@@ -57,23 +23,6 @@ MOCK_PRODUCTS = [
         "availability_status": "Preorder open",
         "estimated_delivery": "Ships in 4-5 weeks",
         "tags": ["handmade", "brass", "heritage craft", "collectible"],
-    },
-    {
-        "id": "prod-block-print-cushion",
-        "name": "Natural Dye Block-Printed Cushion Cover",
-        "artisan_name": "Farida Khan",
-        "craft_type": "Block Printing",
-        "region": "Bagru, Rajasthan",
-        "price": 950,
-        "currency": "INR",
-        "short_description": (
-            "A cotton cushion cover printed with carved wooden blocks and "
-            "earthy natural dye tones."
-        ),
-        "image_url": "/static/images/generated/concept_498f90134f06.png",
-        "availability_status": "Preorder open",
-        "estimated_delivery": "Ships in 2 weeks",
-        "tags": ["handmade", "block printed", "natural dyes", "cotton"],
     },
     {
         "id": "prod-bamboo-basket",
@@ -93,55 +42,157 @@ MOCK_PRODUCTS = [
         "tags": ["handmade", "sustainable", "bamboo", "utility"],
     },
     {
-        "id": "prod-blue-pottery-bowl",
-        "name": "Blue Pottery Serving Bowl",
+        "id": "prod-phulkari-laptop-bag",
+        "name": "Phulkari Embroidered Laptop Bag",
+        "artisan_name": "Gurpreet Kaur",
+        "craft_type": "Phulkari Embroidery",
+        "region": "Amritsar, Punjab",
+        "price": 4200,
+        "currency": "INR",
+        "short_description": (
+            "A structured laptop bag covered in vibrant Phulkari embroidery "
+            "with fuchsia, gold, and orange threadwork on a tan leather frame."
+        ),
+        "image_url": "/static/images/phulkari-laptop-bag.jpeg",
+        "availability_status": "Preorder open",
+        "estimated_delivery": "Ships in 3-4 weeks",
+        "tags": ["handmade", "embroidery", "phulkari", "laptop bag", "punjab"],
+    },
+    {
+        "id": "prod-embroidered-shirt",
+        "name": "Floral Embroidered Cotton Shirt",
+        "artisan_name": "Priya Sharma",
+        "craft_type": "Hand Embroidery",
+        "region": "Lucknow, Uttar Pradesh",
+        "price": 2600,
+        "currency": "INR",
+        "short_description": (
+            "A breezy white cotton shirt with hand-embroidered floral vines "
+            "in blue and pink running along the placket and cuffs."
+        ),
+        "image_url": "/static/images/embroidered-shirt.jpeg",
+        "availability_status": "Preorder open",
+        "estimated_delivery": "Ships in 2-3 weeks",
+        "tags": ["handmade", "embroidery", "cotton", "wearable", "chikankari"],
+    },
+    {
+        "id": "prod-khanda-tshirt",
+        "name": "Khanda Embroidery Art T-Shirt",
+        "artisan_name": "Harjinder Singh",
+        "craft_type": "Embroidery Print",
+        "region": "Amritsar, Punjab",
+        "price": 1800,
+        "currency": "INR",
+        "short_description": (
+            "A heritage black tee featuring an intricately embroidered Khanda "
+            "motif with floral detailing in gold, red, and blue."
+        ),
+        "image_url": "/static/images/khanda-tshirt.jpeg",
+        "availability_status": "Preorder open",
+        "estimated_delivery": "Ships in 2 weeks",
+        "tags": ["handmade", "embroidery", "wearable", "heritage", "punjab"],
+    },
+    {
+        "id": "prod-crochet-sunflower-sling",
+        "name": "Crochet Sunflower Sling Bag",
+        "artisan_name": "Ananya Bose",
+        "craft_type": "Crochet",
+        "region": "Kolkata, West Bengal",
+        "price": 1350,
+        "currency": "INR",
+        "short_description": (
+            "A handcrocheted sling bag in cobalt blue with bold sunflower "
+            "motifs — cheerful, compact, and entirely handmade."
+        ),
+        "image_url": "/static/images/crochet-sunflower-sling.jpeg",
+        "availability_status": "Preorder open",
+        "estimated_delivery": "Ships in 2-3 weeks",
+        "tags": ["handmade", "crochet", "bag", "cotton", "colorful"],
+    },
+    {
+        "id": "prod-crochet-granny-sling",
+        "name": "Crochet Granny Square Sling Bag",
+        "artisan_name": "Ananya Bose",
+        "craft_type": "Crochet",
+        "region": "Kolkata, West Bengal",
+        "price": 1500,
+        "currency": "INR",
+        "short_description": (
+            "A crescent-shaped crochet sling with granny square patchwork in "
+            "slate, terracotta, teal, and mustard — roomy and adjustable."
+        ),
+        "image_url": "/static/images/crochet-granny-sling.jpeg",
+        "availability_status": "Preorder open",
+        "estimated_delivery": "Ships in 2-3 weeks",
+        "tags": ["handmade", "crochet", "bag", "granny square", "boho"],
+    },
+    {
+        "id": "prod-floral-laptop-bag",
+        "name": "Wildflower Embroidered Laptop Bag",
+        "artisan_name": "Ritu Verma",
+        "craft_type": "Hand Embroidery",
+        "region": "Delhi",
+        "price": 3100,
+        "currency": "INR",
+        "short_description": (
+            "A structured black canvas laptop bag with a delicate meadow of "
+            "hand-embroidered wildflowers across the front panel."
+        ),
+        "image_url": "/static/images/floral-laptop-bag.jpeg",
+        "availability_status": "Preorder open",
+        "estimated_delivery": "Ships in 3 weeks",
+        "tags": ["handmade", "embroidery", "laptop bag", "canvas", "floral"],
+    },
+    {
+        "id": "prod-blue-pottery-vase-set",
+        "name": "Blue Pottery Vase Collection",
         "artisan_name": "Naseem Qureshi",
         "craft_type": "Blue Pottery",
         "region": "Jaipur, Rajasthan",
-        "price": 2100,
+        "price": 5800,
         "currency": "INR",
         "short_description": (
-            "A glazed serving bowl with floral blue pottery motifs, sized for "
-            "snacks, salads, and festive table settings."
+            "A curated set of five hand-thrown blue pottery vases with "
+            "indigo floral motifs on a white glaze — perfect for shelf styling."
         ),
-        "image_url": "/static/images/generated/concept_cfb144b0e477.png",
-        "availability_status": "Limited batch",
-        "estimated_delivery": "Ships in 3 weeks",
-        "tags": ["handmade", "ceramic", "tableware", "glazed"],
+        "image_url": "/static/images/blue-pottery-vases.jpeg",
+        "availability_status": "Preorder open",
+        "estimated_delivery": "Ships in 4 weeks",
+        "tags": ["handmade", "ceramic", "blue pottery", "home decor", "set"],
     },
     {
-        "id": "prod-leather-journal",
-        "name": "Handcrafted Leather Journal",
-        "artisan_name": "Saira Bano",
-        "craft_type": "Leather Craft",
-        "region": "Shantiniketan, West Bengal",
-        "price": 1450,
+        "id": "prod-mushroom-mugs",
+        "name": "Ceramic Mushroom Mug with Lid",
+        "artisan_name": "Meera Prajapati",
+        "craft_type": "Pottery",
+        "region": "Khurja, Uttar Pradesh",
+        "price": 1100,
         "currency": "INR",
         "short_description": (
-            "A hand-stitched leather journal with recycled paper pages and a "
-            "warm, naturally aging cover."
+            "A hand-sculpted ceramic mug shaped like a red-cap mushroom, "
+            "complete with a matching lid — whimsical and functional."
         ),
-        "image_url": "/static/images/generated/concept_b77440a84e71.png",
+        "image_url": "/static/images/mushroom-mugs.jpeg",
         "availability_status": "Preorder open",
-        "estimated_delivery": "Ships in 10-14 days",
-        "tags": ["handmade", "leather", "recycled paper", "giftable"],
+        "estimated_delivery": "Ships in 2-3 weeks",
+        "tags": ["handmade", "ceramic", "mug", "kitchenware", "quirky"],
     },
     {
-        "id": "prod-kilim-runner",
-        "name": "Wool Kilim Table Runner",
-        "artisan_name": "Tsering Dolma",
-        "craft_type": "Kilim Weaving",
-        "region": "Leh, Ladakh",
-        "price": 3900,
+        "id": "prod-bow-mug",
+        "name": "Ceramic Bow Mug",
+        "artisan_name": "Meera Prajapati",
+        "craft_type": "Pottery",
+        "region": "Khurja, Uttar Pradesh",
+        "price": 950,
         "currency": "INR",
         "short_description": (
-            "A flatwoven wool runner with geometric kilim motifs, bringing "
-            "warmth and pattern to dining tables and consoles."
+            "A hand-thrown cream ceramic mug with a sculpted pink bow and "
+            "polka-dot texture — a charming addition to any morning ritual."
         ),
-        "image_url": "/static/images/generated/concept_1c6ed69ef905.png",
+        "image_url": "/static/images/bow-mug.jpeg",
         "availability_status": "Preorder open",
-        "estimated_delivery": "Ships in 5-6 weeks",
-        "tags": ["handmade", "wool", "handwoven", "table linen"],
+        "estimated_delivery": "Ships in 2 weeks",
+        "tags": ["handmade", "ceramic", "mug", "kitchenware", "gifting"],
     },
 ]
 
